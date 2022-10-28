@@ -1,6 +1,6 @@
 # weer-app
 
-Visit: [Link](https://sunny-empanada-63754b.netlify.app/)
+Deployed version: [Netlify link](https://sunny-empanada-63754b.netlify.app/)
 
 This template should help get you started developing with Vue 3 in Vite.
 
