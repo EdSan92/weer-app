@@ -9,7 +9,11 @@ export const getWeather = async (coordinates: any) => {
   try {
     if (coordinates) {
       const { data } = await apiClient.get<ICurrentWeather>(
-        `/weather?lat=${coordinates.lat}&lon=${coordinates.lon}&lang=nl&units=metric&appid=6a4ee0163b33f226ca20bb2b1a52c9ed`
+        `/weather?lat=${coordinates.lat}&lon=${
+          coordinates.lon
+        }&lang=nl&units=metric&appid=${
+          import.meta.env.VITE_OPENWEATHER_API_KEY
+        }`
       );
       return [null, data];
     }
@@ -22,7 +26,9 @@ export const getForecast = async (coordinates: any) => {
   try {
     if (coordinates) {
       const { data } = await apiClient.get<ICurrentWeather>(
-        `/forecast?lat=${coordinates.lat}&lon=${coordinates.lon}&units=metric&appid=6a4ee0163b33f226ca20bb2b1a52c9ed`
+        `/forecast?lat=${coordinates.lat}&lon=${
+          coordinates.lon
+        }&units=metric&appid=${import.meta.env.VITE_OPENWEATHER_API_KEY}`
       );
       return [null, data];
     }
