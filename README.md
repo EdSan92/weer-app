@@ -1,5 +1,7 @@
 # weer-app
 
+To run the app, create a .env file at the root and add the following: VITE_OPENWEATHER_API_KEY="<api key>"
+
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
