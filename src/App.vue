@@ -6,8 +6,8 @@
     <div class="flex flex-col items-center">
       <div class="mt-8 pt-4 p-12 rounded-full">
         <CurrentWeather
-          v-if="currentLocation"
-          :coordinates="currentLocation"
+          v-if="weatherData"
+          :weatherData="weatherData.data"
         ></CurrentWeather>
       </div>
     </div>
@@ -24,7 +24,8 @@ import { onMounted, ref } from "vue";
 import axios from "axios";
 import CurrentWeather from "./components/CurrentWeather/CurrentWeather.vue";
 import ForecastWeather from "./components/ForecastWeather/ForecastWeather.vue";
-const weatherData = ref();
+import type { ICurrentWeather } from "./components/CurrentWeather/ICurrentWeather";
+const weatherData = ref<{ data: ICurrentWeather }>();
 const currentLocation = ref();
 onMounted(async () => {
   navigator.geolocation.getCurrentPosition(
@@ -51,6 +52,7 @@ const fetchData = async (location: { lat: number; lon: number }) => {
     weatherData.value = await axios.get(
       `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lon}&lang=nl&units=metric&appid=6a4ee0163b33f226ca20bb2b1a52c9ed`
     );
+    console.log(weatherData.value);
   } catch (error) {
     console.log(error);
   }
